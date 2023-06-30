@@ -16,12 +16,12 @@
  */
 @IsTest
 @SuppressWarnings('PMD.EmptyStatementBlock')
-global class Argument {
-  global interface Matchable {
+public class Argument {
+  public interface Matchable {
     Boolean matches(Object callArgument);
   }
 
-  global class ConfigurationException extends Exception {
+  public class ConfigurationException extends Exception {
   }
 
   private Argument() {
@@ -46,31 +46,31 @@ global class Argument {
     return true;
   }
 
-  global static List<Argument.Matchable> empty() {
+  public static List<Argument.Matchable> empty() {
     return new List<Argument.Matchable>();
   }
 
-  global static List<Argument.Matchable> of(final Object arg) {
+  public static List<Argument.Matchable> of(final Object arg) {
     return Argument.ofList(new List<Object>{ arg });
   }
 
-  global static List<Argument.Matchable> of(final Object arg1, final Object arg2) {
+  public static List<Argument.Matchable> of(final Object arg1, final Object arg2) {
     return Argument.ofList(new List<Object>{ arg1, arg2 });
   }
 
-  global static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3) {
+  public static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3) {
     return Argument.ofList(new List<Object>{ arg1, arg2, arg3 });
   }
 
-  global static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3, final Object arg4) {
+  public static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3, final Object arg4) {
     return Argument.ofList(new List<Object>{ arg1, arg2, arg3, arg4 });
   }
 
-  global static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3, final Object arg4, final Object arg5) {
+  public static List<Argument.Matchable> of(final Object arg1, final Object arg2, final Object arg3, final Object arg4, final Object arg5) {
     return Argument.ofList(new List<Object>{ arg1, arg2, arg3, arg4, arg5 });
   }
 
-  global static List<Argument.Matchable> ofList(final List<Object> listOfArgs) {
+  public static List<Argument.Matchable> ofList(final List<Object> listOfArgs) {
     final List<Argument.Matchable> listOfMatchableArgs = Argument.empty();
     if (listOfArgs == null) {
       return listOfMatchableArgs;
@@ -85,27 +85,27 @@ global class Argument {
     return listOfMatchableArgs;
   }
 
-  global static Argument.Matchable any() {
+  public static Argument.Matchable any() {
     return new AnyMatchable();
   }
 
-  global static Argument.Matchable equals(final Object callArgument) {
+  public static Argument.Matchable equals(final Object callArgument) {
     return new EqualsMatchable(callArgument);
   }
 
-  global static Argument.Matchable jsonEquals(final Object callArgument) {
+  public static Argument.Matchable jsonEquals(final Object callArgument) {
     return new JSONMatchable(callArgument);
   }
 
-  global static Argument.Matchable ofType(final String matchingType) {
+  public static Argument.Matchable ofType(final String matchingType) {
     return new TypeMatchable(matchingType);
   }
 
-  global static Argument.Matchable ofType(final Schema.SObjectType callArgument) {
+  public static Argument.Matchable ofType(final Schema.SObjectType callArgument) {
     return new TypeMatchable(callArgument);
   }
 
-  global static Argument.Matchable ofType(final Type callArgument) {
+  public static Argument.Matchable ofType(final Type callArgument) {
     return new TypeMatchable(callArgument);
   }
 
