@@ -15,16 +15,16 @@
  *  @see Matchable
  */
 @IsTest
-global class MethodSpy {
-  global String methodName { get; private set; }
-  global CallLog callLog { get; private set; }
+public class MethodSpy {
+  public String methodName { get; private set; }
+  public CallLog callLog { get; private set; }
   private List<ParameterizedMethodSpyCall> parameterizedMethodCalls = new List<ParameterizedMethodSpyCall>();
   private Object returnValue;
   private Boolean configuredGlobalReturn = false;
   private Boolean configuredGlobalThrow = false;
   private Exception exceptionToThrow;
 
-  global MethodSpy(String methodName) {
+  public MethodSpy(String methodName) {
     this.methodName = methodName;
     this.callLog = new CallLog();
   }
@@ -56,39 +56,39 @@ global class MethodSpy {
     throw new ConfigurationExceptionBuilder().withMethodSpy(this).withCallArguments(args).build();
   }
 
-  global void returns(Object value) {
+  public void returns(Object value) {
     this.configuredGlobalReturn = true;
     this.configuredGlobalThrow = false;
     this.returnValue = value;
   }
 
-  global void throwsException(Exception exceptionToThrow) {
+  public void throwsException(Exception exceptionToThrow) {
     this.configuredGlobalThrow = true;
     this.configuredGlobalReturn = false;
     this.exceptionToThrow = exceptionToThrow;
   }
 
-  global MethodSpyCall whenCalledWith() {
+  public MethodSpyCall whenCalledWith() {
     return this.whenCalledWithArguments(Argument.empty());
   }
 
-  global MethodSpyCall whenCalledWith(final Object arg) {
+  public MethodSpyCall whenCalledWith(final Object arg) {
     return this.whenCalledWithArguments((arg instanceof List<Argument.Matchable>) ? (List<Argument.Matchable>) arg : Argument.of(arg));
   }
 
-  global MethodSpyCall whenCalledWith(final Object arg1, final Object arg2) {
+  public MethodSpyCall whenCalledWith(final Object arg1, final Object arg2) {
     return this.whenCalledWithArguments(Argument.of(arg1, arg2));
   }
 
-  global MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3) {
+  public MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3) {
     return this.whenCalledWithArguments(Argument.of(arg1, arg2, arg3));
   }
 
-  global MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3, final Object arg4) {
+  public MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3, final Object arg4) {
     return this.whenCalledWithArguments(Argument.of(arg1, arg2, arg3, arg4));
   }
 
-  global MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3, final Object arg4, final Object arg5) {
+  public MethodSpyCall whenCalledWith(final Object arg1, final Object arg2, final Object arg3, final Object arg4, final Object arg5) {
     return this.whenCalledWithArguments(Argument.of(arg1, arg2, arg3, arg4, arg5));
   }
 
@@ -130,7 +130,7 @@ global class MethodSpy {
     }
   }
 
-  global interface MethodSpyCall {
+  public interface MethodSpyCall {
     void thenReturn(Object value);
     void thenThrow(Exception error);
   }
@@ -194,6 +194,6 @@ global class MethodSpy {
     }
   }
 
-  global class ConfigurationException extends Exception {
+  public class ConfigurationException extends Exception {
   }
 }

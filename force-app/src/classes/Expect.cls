@@ -5,8 +5,8 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 @IsTest
-global class Expect {
-  global interface MethodSpyExpectable {
+public class Expect {
+  public interface MethodSpyExpectable {
     /**
      * Assert that a method spy has never been called
      */
@@ -51,11 +51,11 @@ global class Expect {
     void hasBeenLastCalledWith(final Object param1, final Object param2, final Object param3, final Object param4, final Object param5);
   }
 
-  global interface ErrorMessage {
+  public interface ErrorMessage {
     String toString();
   }
 
-  global interface Asserter {
+  public interface Asserter {
     void isTrue(Boolean value, ErrorMessage message);
     void isFalse(Boolean value, ErrorMessage message);
   }
@@ -66,7 +66,7 @@ global class Expect {
    * @param spy the MethodSpy to assert
    * @see       MethodSpy
    */
-  global static MethodSpyExpectable that(MethodSpy spy) {
+  public static MethodSpyExpectable that(MethodSpy spy) {
     return that(spy, METHOD_SPY_ASSERTER);
   }
 
